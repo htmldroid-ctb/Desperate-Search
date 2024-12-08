@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desperate Search 1.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #FFFFFF;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .quote-container {
+            text-align: center;
+            margin: 30px auto;
+            height: 50px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        @keyframes fade {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .quote {
+            animation: fade 5s infinite;
+        }
+
+        .youtube-audio {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .time {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Desperate Search 1.0</h1>
+    </div>
+
+    <div class="search">
+        <script async src="https://cse.google.com/cse.js?cx=007705551111069211972:7sbtwx4ey1u"></script>
+        <div class="gcse-search"></div>
+    </div>
+
+    <div class="quote-container">
+        <div id="quote" class="quote"></div>
+    </div>
+
+    <div class="youtube-audio">
+        <iframe 
+            width="0" 
+            height="0" 
+            src="https://www.youtube.com/embed/sy1M9BkBeuQ?autoplay=1" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="footer">
+        <p>Powered by Sadness</p>
+        <div class="time" id="colombo-time"></div>
+    </div>
+
+    <script>
+        const quotes = ["I don't know how to fix myself. – The Social Network",
+"I don't trust anyone anymore. – The Matrix",
+"I don't need anyone to be happy. – American Psycho",
+"I'm a monster, but it’s all they’ll ever see. – The Dark Knight",
+"I don't know how to love anymore. – The Truman Show",
+"The world has no place for people like me. – Goodfellas",
+"I’ll never find happiness. – Fight Club",
+"I don't care about anything. – Se7en",
+"Nobody understands the way I feel. – Requiem for a Dream",
+"The world’s not fair. – A Clockwork Orange",
+"I’ll always be alone. – The Machinist",
+"I can't escape myself. – A Beautiful Mind",
+"I’m a victim of my own mind. – Fight Club",
+"I’m just a nobody. – The Social Network",
+"The world doesn’t care about me. – The Matrix",
+"I’ll never be one of them. – Requiem for a Dream",
+"I’m just another face in the crowd. – Fight Club",
+"I can’t trust anyone. – The Dark Knight",
+"I can't get away from my past. – Goodfellas",
+"I don’t belong anywhere. – Lost in Translation",
+"They’re all out to get me. – The Shining",
+"I don’t think I’m meant for this world. – A Clockwork Orange",
+"I’m too broken to be loved. – The Machinist",
+"I can’t be fixed. – Requiem for a Dream",
+"They’ll never understand who I am. – The Social Network",
+"I don't think I'm worthy. – Se7en",
+"I’m not meant to be happy. – A Beautiful Mind",
+"The world is a dark place. – The Dark Knight",
+"I don’t know how to love. – The Matrix",
+"Nobody sees me. – Requiem for a Dream",
+"I can't trust anyone. – Goodfellas",
+"They won’t accept me. – American History X",
+"I can’t stand the way they look at me. – Fight Club",
+"They’re just going to use me. – The Social Network",
+"No one cares about me. – Se7en",
+"I can't trust anyone anymore. – The Truman Show",
+"I'm not going to fit into your world. – A Clockwork Orange",
+"I'm not a good person, and I know it. – American Psycho",
+"I don't need love. – Fight Club",
+"No one’s ever going to care. – Requiem for a Dream",
+"I don’t know how to get out of here. – The Matrix",
+"I’ve had enough of this world. – Joker",
+"They’ll never understand me. – Goodfellas",
+"I just want to disappear. – American History X",
+"I am what I am. – The Dark Knight",
+"Nobody will ever get me. – The Machinist",
+"I can’t deal with this anymore. – Requiem for a Dream",
+"I’m so tired of being invisible. – A Beautiful Mind",
+"I don't think anyone understands me. – Fight Club",
+"I don't need anyone to feel alive. – American Psycho",
+"I’m not the hero you think I am. – The Matrix",
+"I'm not as good as they think I am. – The Dark Knight",
+"I don't know where I belong. – Her",
+"I'm alone, always. – The Shining",
+"I don't want to be a part of this anymore. – The Matrix",
+"I don't fit into this world anymore. – Donnie Darko",
+"I’m tired of waiting for something to change. – Fight Club",
+"I can’t live like this anymore. – American History X",
+"I don’t know how to make things better. – A Clockwork Orange",
+"There’s no place for people like me. – Requiem for a Dream",
+"They don't care about me. – Se7en",
+"I don't belong here. – The Truman Show",
+"I don't know how to live. – The Outsiders",
+"I’m broken, and that’s the truth. – The Machinist",
+"I can’t get away from who I am. – Fight Club",
+"I don’t need anyone to be happy. – A Clockwork Orange",
+"I can't escape the way I feel. – Goodfellas",
+"I don't want to die alone. – A Beautiful Mind",
+"I don't think I can be fixed. – Requiem for a Dream",
+"I don’t fit into their plans. – The Social Network",
+"I am not who you think I am. – The Dark Knight",
+"Nobody understands me. – Se7en",
+"I’m tired of being alone. – Lost in Translation",
+"I’m not part of their world. – The Matrix",
+"I'm invisible. – Fight Club",
+"Nobody cares what happens to me. – American Psycho",
+"Everyone’s a stranger in this town. – Joker",
+"I’m just a man trying to survive. – The Matrix",
+"I don’t fit in with anyone. – Trainspotting",
+"I don’t trust anyone anymore. – The Girl with the Dragon Tattoo",
+"I’ve been through hell, but I’m still standing. – The Dark Knight",
+"Sometimes I feel like I’m fading away. – Requiem for a Dream",
+"I can’t trust anyone. – The Godfather",
+"I can’t deal with these people anymore. – American History X",
+"I’m not one of them. – The Shining",
+"I hate the way the world is. – Fight Club",
+"You won’t find happiness in other people. – Lost in Translation",
+"We all just want to be loved, but nobody can. – Her",
+"I don't want to live in a world without meaning. – Donnie Brasco",
+"I don’t fit into this world. – The Truman Show",
+"I’m not going to be part of your pathetic life anymore. – Fight Club",
+"I could have been someone. – Good Will Hunting",
+"I’m trying to survive this mess, not to become a part of it. – The Matrix",
+"I’m the king of the world. – Titanic",
+"The world doesn’t owe me anything. – American Psycho",
+"I’m going to show them that I can be something. – The Social Network",
+"The world would be better off without me. – A Beautiful Mind",
+"This world’s so ugly, why bother to try to fix it? – The Place Beyond the Pines",
+"I’m a product of the system. – Clockwork Orange",
+"You can’t keep blaming yourself. – The Outsiders",
+"I’m living in a world that doesn’t care about me. – The Crow",
+"People like me are never happy. – Goodfellas",
+"The city’s full of false promises. – Joker",
+"People are always telling me I don’t belong. – American History X",
+"It’s not about the money. It’s about sending a message. – The Dark Knight",
+"I don’t think I’m a hero, I’m just trying to survive. – The Dark Knight Rises",
+"I am the one who knocks. – Breaking Bad",
+"They’re not your friends. – Se7en",
+"I don’t want to be here. – Requiem for a Dream",
+"You can't be a hero when you are your own villain. – Fight Club",
+"I’m not a monster. I’m just ahead of the curve. – The Dark Knight",
+"The more you try to make things right, the more wrong they get. – The Machinist",
+"I have to take care of myself. – The Social Network",
+"I'm just a man who needs a little help. – Taxi Driver",
+"What is this place? – Donnie Darko",
+"The world is full of people who are afraid to tell the truth. – A Clockwork Orange",
+"Do you ever feel like you’re just living in someone else’s dream? – The Matrix",
+"You’re a cancer in this town. – American Psycho",
+"I don’t like the way I’m treated. – Fight Club",
+"You’re gonna need a bigger boat. – Jaws", ];
+
+        let currentQuote = 0;
+
+        function displayQuote() {
+            const quoteElement = document.getElementById('quote');
+            quoteElement.textContent = quotes[currentQuote];
+            currentQuote = (currentQuote + 1) % quotes.length;
+        }
+
+        setInterval(displayQuote, 5000);
+        displayQuote();
+
+        function updateTime() {
+            const timeElement = document.getElementById('colombo-time');
+            const options = { timeZone: "Asia/Colombo", timeStyle: "medium", hourCycle: "h24" };
+            const now = new Date().toLocaleTimeString("en-US", options);
+            timeElement.textContent = `Colombo Time: ${now}`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
